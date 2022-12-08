@@ -62,7 +62,7 @@ export default function SettingsScreen({ setToken, token }) {
       tab = tab.join(".");
       const formData = new FormData();
       formData.append("photo", {
-        uri: tab,
+        uri: selectedPicture,
         name: `photo.${extension}`,
         type: `image/${extension}`,
       });
@@ -73,12 +73,11 @@ export default function SettingsScreen({ setToken, token }) {
           formData,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
               "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${token}`,
             },
           }
         );
-        console.log(response.data, "hellot");
       } catch (error) {
         console.log(error.response);
       }
